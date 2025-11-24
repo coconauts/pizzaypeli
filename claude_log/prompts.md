@@ -11,3 +11,7 @@
   Since we now have two pages, "upcoming" and "previously shown", we should add a header to the page with navigation links to access them.
 
   ![1](claude_log/1.png)
+
+  3. Can we extract the css on a static file? 
+
+  
