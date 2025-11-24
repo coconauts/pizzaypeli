@@ -5,7 +5,7 @@ from .models import Movie
 
 
 def upcoming_movies(request):
-    movies = Movie.objects.filter(showed_at__isnull=True)
+    movies = Movie.objects.filter(showed_at__isnull=True).order_by('-vote_count', 'created_at')
     return render(request, 'showtimes/upcoming.html', {'movies': movies})
 
 
