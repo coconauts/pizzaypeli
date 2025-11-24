@@ -10,7 +10,7 @@
         <div class="movie-item">
             <div class="movie-info">
                 <span class="movie-title">{{ movie.title }}</span>
-                <span class="movie-meta">Vista en {{ movie.showed_at|date:"F j, Y" }}</span>
+                <span class="movie-meta">{{ movie.showed_at|date:"F j, Y" }}</span>
             </div>
         </div>
         {% endfor %}
