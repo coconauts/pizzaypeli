@@ -1,64 +1,64 @@
 {% extends 'showtimes/base.html' %}
 
-{% block title %}Pizza y Peli - Próximos estrenos{% endblock %}
-
 {% block content %}
 <div class="card">
-    <h2>Añadir película</h2>
+    <h2>Add movie</h2>
     <form method="post" action="{% url 'add_movie' %}">
         {% csrf_token %}
         <div class="form-group">
-            <input type="text" name="title" placeholder="Título..." required>
-            <button type="submit">Añadir</button>
+            <input type="text" name="title" placeholder="Title..." required>
+            <button type="submit">Add</button>
         </div>
     </form>
 </div>
 
 <div class="card">
     {% if movies %}
-        {% for movie in movies %}
-        <div class="movie-item">
-            <div class="movie-info">
-                <span class="movie-title">{{ movie.title }}</span>
-                <span class="movie-meta">{{ movie.vote_count }} voto{{ movie.vote_count|pluralize }}</span>
-            </div>
-            <div class="movie-actions">
-                <form method="post" action="{% url 'vote_movie' movie.id %}" style="display: inline;">
-                    {% csrf_token %}
-                    <button type="submit" class="vote-button">Votar</button>
-                </form>
-                <form method="post" action="{% url 'mark_as_shown' movie.id %}" class="mark-shown-form" id="mark-shown-form-{{ movie.id }}">
-                    {% csrf_token %}
-                    <input type="date" name="showed_date" class="date-picker-hidden" id="date-picker-{{ movie.id }}" required>
-                    <button type="button" class="mark-shown-button" onclick="showDatePicker({{ movie.id }})">Marcar como vista</button>
-                </form>
-            </div>
+    {% for movie in movies %}
+    <div class="movie-item">
+        <div class="movie-info">
+            <span class="movie-title">{{ movie.title }}</span>
+            <span class="movie-meta">{{ movie.vote_count }} vote{{ movie.vote_count|pluralize }}</span>
         </div>
-        {% endfor %}
+        <div class="movie-actions">
+            <form method="post" action="{% url 'vote_movie' movie.id %}" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit" class="vote-button">Vote</button>
+            </form>
+            <form method="post" action="{% url 'mark_as_shown' movie.id %}" class="mark-shown-form"
+                id="mark-shown-form-{{ movie.id }}">
+                {% csrf_token %}
+                <input type="date" name="showed_date" class="date-picker-hidden" id="date-picker-{{ movie.id }}"
+                    required>
+                <button type="button" class="mark-shown-button" onclick="showDatePicker({{ movie.id }})">Mark as seen</button>
+            </form>
+        </div>
+    </div>
+    {% endfor %}
     {% else %}
-        <div class="empty-state">
-            No hay películas propuestas aún. 
-        </div>
+    <div class="empty-state">
+        No movies planned yet.
+    </div>
     {% endif %}
 </div>
 
 <script>
-function showDatePicker(movieId) {
-    const datePicker = document.getElementById('date-picker-' + movieId);
-    const form = document.getElementById('mark-shown-form-' + movieId);
+    function showDatePicker(movieId) {
+        const datePicker = document.getElementById('date-picker-' + movieId);
+        const form = document.getElementById('mark-shown-form-' + movieId);
 
-    // Show and focus the date picker
-    datePicker.classList.remove('date-picker-hidden');
-    datePicker.classList.add('date-picker-visible');
-    datePicker.focus();
-    datePicker.click();
+        // Show and focus the date picker
+        datePicker.classList.remove('date-picker-hidden');
+        datePicker.classList.add('date-picker-visible');
+        datePicker.focus();
+        datePicker.click();
 
-    // Submit form when date is selected
-    datePicker.addEventListener('change', function() {
-        if (this.value) {
-            form.submit();
-        }
-    }, { once: true });
-}
+        // Submit form when date is selected
+        datePicker.addEventListener('change', function () {
+            if (this.value) {
+                form.submit();
+            }
+        }, { once: true });
+    }
 </script>
 {% endblock %}

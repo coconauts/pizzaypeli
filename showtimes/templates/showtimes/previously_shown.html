@@ -1,23 +1,21 @@
 {% extends 'showtimes/base.html' %}
 
-{% block title %}Pizza y Peli - Histórico {% endblock %}
-
 {% block content %}
 <div class="card">
-    <h2>Histórico de películas </h2>
+    <h2>Previously shown movies</h2>
     {% if movies %}
-        {% for movie in movies %}
-        <div class="movie-item">
-            <div class="movie-info">
-                <span class="movie-title">{{ movie.title }}</span>
-                <span class="movie-meta">{{ movie.showed_at|date:"F j, Y" }}</span>
-            </div>
+    {% for movie in movies %}
+    <div class="movie-item">
+        <div class="movie-info">
+            <span class="movie-title">{{ movie.title }}</span>
+            <span class="movie-meta">{{ movie.showed_at|date:"F j, Y" }}</span>
         </div>
-        {% endfor %}
+    </div>
+    {% endfor %}
     {% else %}
-        <div class="empty-state">
-            No hay películas en el histórico.
-        </div>
+    <div class="empty-state">
+        No movies have been shown yet.
+    </div>
     {% endif %}
 </div>
 {% endblock %}

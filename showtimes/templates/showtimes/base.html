@@ -13,8 +13,8 @@
         <div class="header-content">
             <h1>Cartelera Pizza y Peli</h1>
             <nav>
-                <a href="{% url 'upcoming_movies' %}" class="{% if request.resolver_match.url_name == 'upcoming_movies' %}active{% endif %}">Próximamente</a>
-                <a href="{% url 'previously_shown' %}" class="{% if request.resolver_match.url_name == 'previously_shown' %}active{% endif %}">Histórico</a>
+                <a href="{% url 'upcoming_movies' %}" class="{% if request.resolver_match.url_name == 'upcoming_movies' %}active{% endif %}">Upcoming</a>
+                <a href="{% url 'previously_shown' %}" class="{% if request.resolver_match.url_name == 'previously_shown' %}active{% endif %}">Previously shown</a>
             </nav>
         </div>
     </header>
