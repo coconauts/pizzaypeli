@@ -22,6 +22,6 @@ def get_movie_info(imdb_id):
         'title': movie.title,
         'year': movie.year,
         'cover_url': movie.cover_url,
-        # 'imdb_id': movie.imdb_id,
+        'imdb_id': movie.imdb_id,
         'description': movie.plot
     }
