@@ -22,10 +22,7 @@
             </div>
             <form method="post" action="{% url 'add_movie' %}">
                 {% csrf_token %}
-                <input type="hidden" name="title" value="{{ movie.title }}">
-                <input type="hidden" name="year" value="{{ movie.year }}">
-                <input type="hidden" name="cover_url" value="{{ movie.cover_url }}">
-                <input type="hidden" name="description" value="{{ movie.description }}">
+                <input type="hidden" name="imdb_id" value="{{ movie.imdb_id }}">
                 <button type="submit" class="add-button">Add</button>
             </form>
         </div>

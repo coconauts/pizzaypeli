@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from datetime import date
 from .models import Movie
-from .metadata_fetcher import search_movies as imdb_search
+# from . import imdb
+from .metadata_fetcher import get_movie_info, search_movies as imdb_search
 
 
 def upcoming_movies(request):
@@ -21,9 +22,6 @@ def upcoming_movies(request):
         'search_query': search_query,
     })
 
-    # return render(request, 'showtimes/upcoming.html', {'movies': movies})
-
-
 
 def previously_shown(request):
     movies = Movie.objects.filter(showed_at__isnull=False).order_by('-showed_at')
@@ -32,25 +30,10 @@ def previously_shown(request):
 
 def add_movie(request):
     if request.method == 'POST':
-        # TODO i'll edit this later
-        title = request.POST.get('title', '').strip()
-        year = request.POST.get('year', '')
-        cover_url = request.POST.get('cover_url', '')
-        description = request.POST.get('description', '')
+        imdb_id = request.POST.get('imdb_id', '').strip()
+        movie_data = get_movie_info(imdb_id)
+        Movie.objects.create(**movie_data)
 
-        if title:
-            movie_data = {'title': title}
-            if year:
-                movie_data['year'] = int(year)
-            if cover_url:
-                movie_data['cover_url'] = cover_url
-            if description:
-                movie_data['description'] = description
-
-            Movie.objects.create(**movie_data)
-            messages.success(request, f'Movie "{title}" added successfully!')
-        else:
-            messages.error(request, 'Please enter a movie title.')
     return redirect('upcoming_movies')
 
 
