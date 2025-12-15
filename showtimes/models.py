@@ -6,15 +6,19 @@ class Movie(models.Model):
     vote_count = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     showed_at = models.DateField(null=True, blank=True)
+    cover_url = models.URLField(default='/static/showtimes/images/no-cover.jpg')
+    year = models.IntegerField(default=0)
+    description = models.TextField(default='No description')
+    imdb_id = models.CharField(max_length=20, null=True, blank=True)
 
     def __str__(self):
         return f"{self.title} ({self.vote_count} votes)"
     
-    # @property
-    # def upcoming(self):
-    #     return self.showed_at is None
+    @property
+    def is_upcoming(self):
+        return self.showed_at is None
     
-    # @property
-    # def previously_shown(self):
-    #     return self.showed_at is not None
+    @property
+    def is_previously_shown(self):
+        return self.showed_at is not None
 
