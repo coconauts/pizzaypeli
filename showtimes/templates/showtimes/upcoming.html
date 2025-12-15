@@ -14,17 +14,29 @@
     {% if search_results %}
     <div class="search-results">
         {% for movie in search_results %}
-        <div class="search-result">
+        <div class="search-result {% if movie.is_upcoming %}search-result-upcoming{% elif movie.is_previously_shown %}search-result-shown{% endif %}">
             <img src="{{ movie.cover_url }}" alt="{{ movie.title }}" class="search-result-cover">
             <div class="search-result-info">
                 <span class="movie-title">{{ movie.title }}</span>
                 {% if movie.year %}<span class="movie-year">({{ movie.year }})</span>{% endif %}
+                {% if movie.is_upcoming %}
+                <span class="search-result-status">Already listed</span>
+                {% elif movie.is_previously_shown %}
+                <span class="search-result-status">Already shown</span>
+                {% endif %}
             </div>
+            {% if movie.is_upcoming %}
+            <form method="post" action="{% url 'vote_movie' movie.existing_id %}">
+                {% csrf_token %}
+                <button type="submit" class="vote-button">Vote</button>
+            </form>
+            {% elif not movie.is_previously_shown %}
             <form method="post" action="{% url 'add_movie' %}">
                 {% csrf_token %}
                 <input type="hidden" name="imdb_id" value="{{ movie.imdb_id }}">
                 <button type="submit" class="add-button">Add</button>
             </form>
+            {% endif %}
         </div>
         {% endfor %}
     </div>
@@ -36,8 +48,8 @@
 </div>
 
 <div class="card">
-    {% if movies %}
-    {% for movie in movies %}
+    {% if upcoming_movies %}
+    {% for movie in upcoming_movies %}
     <div class="movie-card">
         <img src="{{ movie.cover_url }}" alt="{{ movie.title }}" class="movie-cover">
         <div class="movie-details">

@@ -42,3 +42,13 @@
   4. when the button is pressed, the movie is then saved to the DB, and this will appear on the list of upcoming movies on reload
 
   ![6](claude_log/6.png)
+
+> Now if a movie comes up in the search results that it's already on the upcoming list, then it should be hightlighted (eg, with a background color, plus a text like "Already listed"), and instead of an "add" button it should have a "vote" button.
+  And if a movie it's on the previously shown list, then it should be hightligted with a different background color, plus a message "shown on <date>", and no button. 
+
+-- claude here did a nasty thing with complicated logic in the template
+
+> I modified the view to precompute the search results to include a is_upcoming/is_previously_shown flag. We can now simplify the template
+
+-- claude did a couple of slips here as well that I had to correct
+
