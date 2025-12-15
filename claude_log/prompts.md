@@ -52,3 +52,12 @@
 
 -- claude did a couple of slips here as well that I had to correct
 
+  ![7](claude_log/7.png)
+
+> The button for voting in the search results is bigger than the button for adding. Let's make them the same size
+
+> Now they are the same size, but because of different padding and lenght of text they  still look misaligned. Let's make them aligned and the same lenght.
+
+> They still look misaligned because of different paddings in the containers, see screenshot [Image #1]
+
+  ![8](claude_log/8.png)

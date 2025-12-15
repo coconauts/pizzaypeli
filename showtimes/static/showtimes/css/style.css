@@ -13,7 +13,7 @@ header {
     background-color: #2c3e50;
     color: white;
     padding: 20px 0;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .header-content {
@@ -81,7 +81,7 @@ nav a.active {
     padding: 20px;
     border-radius: 8px;
     margin-bottom: 20px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .card h2 {
@@ -259,6 +259,7 @@ button:hover {
         opacity: 0;
         transform: scale(0.95);
     }
+
     to {
         opacity: 1;
         transform: scale(1);
@@ -275,8 +276,10 @@ button:hover {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 8px 0;
+    padding: 8px;
     border-bottom: 1px solid #eee;
+    border-radius: 4px;
+    /* margin: 2px 0; */
 }
 
 .search-result:last-child {
@@ -298,10 +301,15 @@ button:hover {
     min-width: 0;
 }
 
-.add-button {
-    background-color: #17a2b8;
+.search-result button {
     padding: 6px 12px;
     font-size: 14px;
+    min-width: 60px;
+    text-align: center;
+}
+
+.add-button {
+    background-color: #17a2b8;
 }
 
 .add-button:hover {
@@ -310,16 +318,10 @@ button:hover {
 
 .search-result-upcoming {
     background-color: #e8f5e9;
-    border-radius: 4px;
-    padding: 8px;
-    margin: -8px 0;
 }
 
 .search-result-shown {
     background-color: #fff3e0;
-    border-radius: 4px;
-    padding: 8px;
-    margin: -8px 0;
 }
 
 .search-result-status {
