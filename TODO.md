@@ -1,1 +1,12 @@
-- Fetch movie metadata, on local DB or from API
+- mark as seen shortcut with today's date
+- order by different filters (votes, last/first added, score...)
+- delete button
+- dockerize 
+- use a component library rather than custom css (eg, tailwind)
+- more metadata:
+    - parental info
+    - score
+    - external links (eg, imdb,  justwatch, commonsensemedia... )
+    - trailer
+    - check a movie in radarr as an example
+- consider an alternative metadata source. Eg: https://www.thetvdb.com/ or https://www.themoviedb.org/

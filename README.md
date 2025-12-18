@@ -6,7 +6,7 @@ A simple app to plan and keep track of our home cinema sessions.
 
 Made with Django, and mostly vibecoded with Claude and Cursor. I'm trying to keep a log of the prompts used at [claude_log/prompts.md](claude_log/prompts.md)
 
-Uses https://github.com/tveronesi/imdbinfo to fetch movie metadata (no API keys required)
+Uses https://github.com/tveronesi/imdbinfo to fetch movie metadata from imdb (no API keys required)
 
 ## Install
 
