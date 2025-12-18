@@ -67,3 +67,12 @@ def mark_as_shown(request, movie_id):
         else:
             messages.error(request, 'Please select a date.')
     return redirect('upcoming_movies')
+
+
+def delete_movie(request, movie_id):
+    if request.method == 'POST':
+        movie = get_object_or_404(Movie, id=movie_id)
+        title = movie.title
+        movie.delete()
+        messages.success(request, f'Deleted "{title}"')
+    return redirect('upcoming_movies')

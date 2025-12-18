@@ -51,6 +51,10 @@
     {% if upcoming_movies %}
     {% for movie in upcoming_movies %}
     <div class="movie-card">
+        <form method="post" action="{% url 'delete_movie' movie.id %}">
+            {% csrf_token %}
+            <button type="submit" class="delete-button" title="Delete">🗑</button>
+        </form>
         <img src="{{ movie.cover_url }}" alt="{{ movie.title }}" class="movie-cover">
         <div class="movie-details">
             <div class="movie-header">

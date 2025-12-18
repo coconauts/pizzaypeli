@@ -61,3 +61,12 @@
 > They still look misaligned because of different paddings in the containers, see screenshot [Image #1]
 
   <img src="8.png"/>
+
+> write me a a line to run on the django shell to drop all movies in the db without imdb_id
+
+> Add a little waste bin icon to upcoming movies to delete them from the list
+
+> I don't like how the delete button looks. I'd like it to look just like an inline icon, rather than a colored button. And move it to the top right corner
+
+  <img src="9.png"/>
+

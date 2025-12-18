@@ -1,6 +1,5 @@
 - mark as seen shortcut with today's date
 - order by different filters (votes, last/first added, score...)
-- delete button
 - dockerize 
 - use a component library rather than custom css (eg, tailwind)
 - more metadata:

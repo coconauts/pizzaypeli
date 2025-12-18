@@ -7,4 +7,5 @@ urlpatterns = [
     path('add/', views.add_movie, name='add_movie'),
     path('vote/<int:movie_id>/', views.vote_movie, name='vote_movie'),
     path('mark-as-shown/<int:movie_id>/', views.mark_as_shown, name='mark_as_shown'),
+    path('delete/<int:movie_id>/', views.delete_movie, name='delete_movie'),
 ]
