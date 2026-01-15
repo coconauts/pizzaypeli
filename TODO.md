@@ -1,6 +1,5 @@
 - mark as seen shortcut with today's date
 - order by different filters (votes, last/first added, score...)
-- dockerize 
 - use a component library rather than custom css (eg, tailwind)
 - more metadata:
     - parental info
@@ -9,3 +8,5 @@
     - trailer
     - check a movie in radarr as an example
 - consider an alternative metadata source. Eg: https://www.thetvdb.com/ or https://www.themoviedb.org/
+- imdbinfo library needs frequent updating, since it relies on scraping. Consider a script for atomated updating in production (detecting new versions and forcing a rebuild). Or perhaps just forcing a rebuild periodically regardless.
+- review security settings if I host this publicly https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/

@@ -6,9 +6,32 @@ A simple app to plan and keep track of our home cinema sessions.
 
 Made with Django, and mostly vibecoded with Claude and Cursor. I'm trying to keep a log of the prompts used at [claude_log/prompts.md](claude_log/prompts.md)
 
-Uses https://github.com/tveronesi/imdbinfo to fetch movie metadata from imdb (no API keys required)
+Uses https://github.com/tveronesi/imdbinfo to fetch movie metadata from imdb (no API keys required).
 
-## Install
+## Run with docker:
+
+Build and run the docker image with:
+
+`docker compose up --build`, then visit http://localhost:8000  
+
+The docker setup runs a production build with gunicorn and whitenoise. 
+
+
+### Deploying
+
+If deploying to a public server, and `.env` file is needed with some security settings. Copy the sample env file:
+
+```
+cp .env.example .env
+```
+
+And then:
+
+- Update `DJANGO_ALLOWED_HOSTS` to include your domain
+- Generate a secret key with: `python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"`, then set it as the value for `DJANGO_SECRET_KEY`
+
+
+## Local install
 
 Make and use a virtualenv for all commands:
 
@@ -21,7 +44,7 @@ Thn install dependencies:
 
 ```pip install -r requirements.txt```
 
-## Housekeeping
+## Development
 
 Note: use the virtual env for all commands:
 
