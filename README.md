@@ -8,7 +8,15 @@ Made with Django, and mostly vibecoded with Claude and Cursor. I'm trying to kee
 
 Uses https://github.com/tveronesi/imdbinfo to fetch movie metadata from imdb (no API keys required)
 
-## Install
+## Run with docker:
+
+Docker setup runs a production build with gunicorn and whitenoise. Run with:
+
+`docker compose up --build`, then visit http://localhost:8000  
+
+If deploying to a public server, update `DJANGO_ALLOWED_HOSTS` in <docker-compose.yml> to include your domain.
+
+## Local install
 
 Make and use a virtualenv for all commands:
 
@@ -21,7 +29,7 @@ Thn install dependencies:
 
 ```pip install -r requirements.txt```
 
-## Housekeeping
+## Development
 
 Note: use the virtual env for all commands:
 

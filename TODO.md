@@ -9,3 +9,5 @@
     - trailer
     - check a movie in radarr as an example
 - consider an alternative metadata source. Eg: https://www.thetvdb.com/ or https://www.themoviedb.org/
+- imdbinfo library needs frequent updating, since it relies on scraping. Consider a script for atomated updating in production (detecting new versions and forcing a rebuild). Or perhaps just forcing a rebuild periodically regardless.
+

@@ -70,3 +70,7 @@
 
   <img src="9.png"/>
 
+> I would like to dockerize this application. It's a django app, README.md lists all relevant commands. Uses local db.sqlite3
+-- ALOT of back and forth was done in all the steps of this prompt
+
+
