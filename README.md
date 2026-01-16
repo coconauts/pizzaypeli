@@ -8,43 +8,51 @@ Made with Django, and mostly vibecoded with Claude and Cursor. I'm trying to kee
 
 Uses https://github.com/tveronesi/imdbinfo to fetch movie metadata from imdb (no API keys required).
 
-## Run with docker:
+## Run with Docker
 
-The docker setup runs a production build with gunicorn and whitenoise. 
+You'll need Docker: https://docs.docker.com/engine/install/
 
-It requires an `.env` file to be present. You can copy the example one:
+Build and run:
+
+```
+docker compose up --build
+```
+
+Then visit http://localhost:8000
+
+This runs with production settings (gunicorn + whitenoise, DEBUG=False).
+
+To stop: `docker compose down`
+
+### Configuration
+
+Some settings can be overriden with environment variables:
+
+- `CUSTOM_DOMAIN`: **required** if you're running on a public server (or you'll get 400 errors). Defaults to localhost.
+- `PORT`: defaults to 8000, if unset.
+- ... and more. 
+
+Check <.env.example> for the full list. Make a copy to edit to your needs:
 
 `cp .env.example .env`
 
-And edit any variables you may need (eg, on a public server `DJANGO_ALLOWED_HOSTS` should include your domain).
+## Development cookbook
 
-Then build and run the docker image with:
-
-`docker compose up --build`, then visit http://localhost:8000  
-
-
-## Local install
-
-Make and use a virtualenv for all commands:
+Note: make and use a virtualenv for all commands:
 
 ```
 python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-Thn install dependencies:
-
+Install dependencies: 
 ```pip install -r requirements.txt```
 
-## Development
-
-Note: use the virtual env for all commands:
-
-`source .venv/bin/activate`
 
 Run the app:
 
 `python manage.py runserver`
+
 
 Handle migrations:
 
@@ -56,6 +64,7 @@ python mange.py migrate # to apply the changes to the DB
 Django shell:
 
 `python manage.py shell`
+
 
 Add new dependencies:
 
