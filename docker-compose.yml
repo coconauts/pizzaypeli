@@ -7,3 +7,4 @@ services:
       - ./db.sqlite3:/app/db.sqlite3
     env_file:
       - .env
+    restart: unless-stopped
