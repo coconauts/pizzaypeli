@@ -26,6 +26,7 @@ db.sqlite3-journal
 /media
 /staticfiles
 /static
+/data
 
 # If you are using PostgreSQL
 *.sql

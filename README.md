@@ -10,25 +10,17 @@ Uses https://github.com/tveronesi/imdbinfo to fetch movie metadata from imdb (no
 
 ## Run with docker:
 
-Build and run the docker image with:
-
-`docker compose up --build`, then visit http://localhost:8000  
-
 The docker setup runs a production build with gunicorn and whitenoise. 
 
+It requires an `.env` file to be present. You can copy the example one:
 
-### Deploying
+`cp .env.example .env`
 
-If deploying to a public server, and `.env` file is needed with some security settings. Copy the sample env file:
+And edit any variables you may need (eg, on a public server `DJANGO_ALLOWED_HOSTS` should include your domain).
 
-```
-cp .env.example .env
-```
+Then build and run the docker image with:
 
-And then:
-
-- Update `DJANGO_ALLOWED_HOSTS` to include your domain
-- Generate a secret key with: `python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"`, then set it as the value for `DJANGO_SECRET_KEY`
+`docker compose up --build`, then visit http://localhost:8000  
 
 
 ## Local install

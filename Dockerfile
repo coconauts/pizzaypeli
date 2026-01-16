@@ -12,8 +12,10 @@ COPY . .
 # Collect static files
 RUN python manage.py collectstatic --noinput
 
+# Create data directory for persistent files
+RUN mkdir -p /app/data
+
 # Expose port
 EXPOSE 8000
 
-# Run migrations and start gunicorn
-CMD ["sh", "-c", "python manage.py migrate && gunicorn --bind 0.0.0.0:8000 pizzaypeli.wsgi:application"]
+CMD ["./entrypoint.sh"]
