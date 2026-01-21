@@ -10,3 +10,7 @@
 - consider an alternative metadata source. Eg: https://www.thetvdb.com/ or https://www.themoviedb.org/
 - imdbinfo library needs frequent updating, since it relies on scraping. Consider a script for atomated updating in production (detecting new versions and forcing a rebuild). Or perhaps just forcing a rebuild periodically regardless.
 - review security settings if I host this publicly https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
+- BUG: we have too many movies now in the list from imdb when you search, some duplicates (eg, when you search "dora and the lost city"). Investigate how to filter the list.
+- allow movies to be added as watched without a date
+- allow to edit watched movies (date, delete...)
+- support "reruns"
