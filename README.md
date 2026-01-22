@@ -24,6 +24,10 @@ This runs with production settings (gunicorn + whitenoise, DEBUG=False).
 
 To stop: `docker compose down`
 
+To run in background:
+
+`docker compose start` or `docker compose up -d`
+
 ### Configuration
 
 Some settings can be overriden with environment variables:
