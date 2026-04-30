@@ -36,7 +36,7 @@ Some settings can be overriden with environment variables:
 - `PORT`: defaults to 8000, if unset.
 - ... and more. 
 
-Check <.env.example> for the full list. Make a copy to edit to your needs:
+Check [.env.example](.env.example) for the full list. Make a copy to edit to your needs:
 
 `cp .env.example .env`
 
@@ -73,4 +73,12 @@ Django shell:
 Add new dependencies:
 
 `pip freeze > requirements.txt`
+
+## Troubleshooting
+
+We're relying on a third party library parsing the imDB html directly (https://github.com/tveronesi/imdbinfo). As such, every time imdb changes the format, the library becomes outdated and the app breaks.
+
+Most likely, the fix for any 500 errors is bumping the version of the imdbinfo library:
+
+`pip install -U imdbinfo`
 
