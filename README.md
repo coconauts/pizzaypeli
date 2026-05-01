@@ -86,7 +86,7 @@ A quick fix is to force a version bump on the library:
 
 `pip install -U imdbinfo`
 
-There's some dirty hacks to mitigate this in production:
+To mitigate this in production:
 
 - The container's entrypoint runs `pip install -U imdbinfo` on every start, so a `docker compose restart web` is enough to pick up a new release.
 - A helper script, [update-imdbinfo.sh](update-imdbinfo.sh), checks if the pip version is stale, and restarts the container when there's a new version.
