@@ -28,7 +28,7 @@ DEBUG = os.getenv('DJANGO_DEBUG', 'True').lower() in ('true', '1', 'yes')
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 if os.getenv('CUSTOM_DOMAIN'):
-    ALLOWED_HOSTS.append(os.getenv('CUSTOM_DOMAIN'))
+    ALLOWED_HOSTS.extend(h.strip() for h in os.getenv('CUSTOM_DOMAIN').split(',') if h.strip())
 
 
 # Application definition
