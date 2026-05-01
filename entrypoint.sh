@@ -11,6 +11,11 @@ if [ -z "$DJANGO_SECRET_KEY" ]; then
     export DJANGO_SECRET_KEY=$(cat /app/data/.secret_key)
 fi
 
+# Pull the latest imdbinfo on every start (the library frequently needs updates
+# to keep up with IMDB's HTML changes). Non-fatal: if PyPI is unreachable, we
+# fall back to whatever version is already installed.
+pip install -U imdbinfo || echo "Warning: could not update imdbinfo, continuing with installed version"
+
 # Run migrations and start server
 python manage.py migrate
 exec gunicorn --bind 0.0.0.0:8000 pizzaypeli.wsgi:application

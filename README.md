@@ -28,6 +28,10 @@ To run in background:
 
 `docker compose start` or `docker compose up -d`
 
+To force a clean rebuild:
+
+`docker compose build --no-cache`
+
 ### Configuration
 
 Some settings can be overriden with environment variables:
@@ -74,11 +78,18 @@ Add new dependencies:
 
 `pip freeze > requirements.txt`
 
-## Troubleshooting
+## Keeping imdbinfo up to date
 
-We're relying on a third party library parsing the imDB html directly (https://github.com/tveronesi/imdbinfo). As such, every time imdb changes the format, the library becomes outdated and the app breaks.
+We're relying on a third party library parsing the imDB html directly (https://github.com/tveronesi/imdbinfo). As such, every time imdb changes the format, the library becomes outdated and the app breaks. If you're getting 500 errors, most likely this is the cause.
 
-Most likely, the fix for any 500 errors is bumping the version of the imdbinfo library:
+A quick fix is to force a version bump on the library:
 
 `pip install -U imdbinfo`
+
+To mitigate this in production:
+
+- The container's entrypoint runs `pip install -U imdbinfo` on every start, so a `docker compose restart web` is enough to pick up a new release.
+- A helper script, [update-imdbinfo.sh](update-imdbinfo.sh), checks if the pip version is stale, and restarts the container when there's a new version.
+- You can setup a crontab that runs this script in a production server: `*/10 * * * * /path/to/pizzaypeli/update-imdbinfo.sh >> /var/log/pizzaypeli-update.log 2>&1`
+
 
